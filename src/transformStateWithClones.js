@@ -34,7 +34,7 @@
 //         break;
 
 //       default:
-//         break;
+//         throw new Error(`Unknown action type: ${action.type}`);
 //     }
 
 //     history.push(newState);
@@ -64,6 +64,8 @@ function transformStateWithClones(state, actions) {
       }
     } else if (action.type === 'clear') {
       nextState = {};
+    } else {
+      throw new Error(`Unknown action type: ${action.type}`);
     }
 
     history.push(nextState);
