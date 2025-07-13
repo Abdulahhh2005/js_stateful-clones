@@ -32,6 +32,9 @@
 //       case 'clear':
 //         newState = {};
 //         break;
+
+//       default:
+//         break;
 //     }
 
 //     history.push(newState);
@@ -53,17 +56,13 @@ function transformStateWithClones(state, actions) {
 
     if (action.type === 'addProperties') {
       nextState = { ...prev, ...action.extraData };
-    }
-
-    if (action.type === 'removeProperties') {
+    } else if (action.type === 'removeProperties') {
       nextState = { ...prev };
 
       for (const key of action.keysToRemove) {
         delete nextState[key];
       }
-    }
-
-    if (action.type === 'clear') {
+    } else if (action.type === 'clear') {
       nextState = {};
     }
 
